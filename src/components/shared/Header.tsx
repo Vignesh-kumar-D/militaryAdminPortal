@@ -24,7 +24,7 @@ const Header: React.FC = () => {
   const location = useLocation();
 
   return (
-    <header className="hidden md:flex items-center w-full h-20 bg-sidebar text-sidebar-foreground px-6 py-4 shadow-xl border-b border-sidebar-border relative z-20">
+    <header className="hidden md:flex items-center w-full h-20 bg-sidebar bg-primary text-primary-foreground text-sidebar-foreground px-6 py-4 shadow-xl border-b border-sidebar-border relative z-20">
       {/* Home / App Title or Logo - Left aligned */}
       <Link
         to="/dashboard"

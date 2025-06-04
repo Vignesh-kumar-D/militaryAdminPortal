@@ -3,130 +3,219 @@
 @tailwind utilities;
 
 /*
-  TAILWIND CSS V4 THEME DEFINITION
-  All custom theme extensions (colors, fonts, keyframes, animations, gradients)
-  are defined here directly within the @theme directive for Tailwind CSS v4.
+  RAW CSS VARIABLE DEFINITIONS (OKLCH values)
+  These are defined in the global scope (:root) for light mode.
+  These are consumed by Shadcn UI components and by the @theme block below.
 */
-@theme {
-  /* This 'base' selector represents the default theme, similar to 'extend' in older configs */
+:root {
+  /* Radii */
   --radius: 0.625rem;
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
 
-  /* Define your custom colors using HSL values as CSS variables */
-  --border: 210 10% 80%;
-  --input: 0 0% 98%;
-  --ring: 90 45% 30%; /* Primary olive for focus ring */
-  --background: 210 15% 95%; /* Soft, very light blue-gray for depth */
-  --foreground: 210 20% 12%; /* Very dark blue-gray */
-  --primary: 90 45% 25%; /* Deep Forest Olive - more grounded */
-  --primary-light: 90 40% 35%; /* A lighter shade for gradients/hover */
-  --primary-dark: 90 50% 20%; /* A darker shade for gradients/active */
-  --primary-foreground: 0 0% 98%; /* Near white */
-  --secondary: 355 55% 20%; /* Rich, deep Burgundy/Maroon */
-  --secondary-light: 355 50% 30%;
-  --secondary-dark: 355 60% 15%;
-  --secondary-foreground: 0 0% 98%;
-  --destructive: 0 85% 45%;
-  --destructive-foreground: 0 0% 98%;
-  --muted: 210 10% 90%; /* Softer, slightly darker muted gray */
-  --muted-foreground: 210 10% 45%;
-  --accent: 40 95% 45%; /* Vibrant Goldenrod/Saffron */
-  --accent-light: 40 90% 55%;
-  --accent-dark: 40 100% 35%;
-  --accent-foreground: 210 20% 10%;
-  --popover: 0 0% 100%;
-  --popover-foreground: var(--foreground);
-  --card: 0 0% 100%; /* Pure white for cards */
-  --card-foreground: var(--foreground);
-  --sidebar: var(--primary); /* Header background is now primary */
-  --sidebar-foreground: var(
-    --primary-foreground
-  ); /* Header text is primary-foreground */
-  --sidebar-primary: var(--primary-foreground); /* Icon color (white) */
-  --sidebar-primary-foreground: var(
-    --primary
-  ); /* Text on the icon if it had a background */
-  --sidebar-accent: var(--accent); /* Accent color for active items */
-  --sidebar-accent-foreground: var(
-    --accent-foreground
-  ); /* Text color on accent */
-  --sidebar-border: var(--primary-dark); /* Darker olive for border */
-  --sidebar-ring: var(--accent); /* Accent for focus ring */
-  --chart-1: 90 35% 40%;
-  --chart-2: 355 35% 35%;
-  --chart-3: 200 25% 45%;
-  --chart-4: 60 45% 50%;
-  --chart-5: 0 0% 30%;
-  /* Dark mode  */
-  /* Neutrals - Deeper, but still distinct */
-  --background: 210 20% 6%;
-  --foreground: 210 20% 92%;
-  --card: 210 20% 9%;
-  --card-foreground: var(--foreground);
-  --popover: 210 20% 9%;
-  --popover-foreground: var(--foreground);
-
-  /* Core Army Colors - Maintain vibrancy on dark background */
-  --primary: 90 55% 40%;
-  --primary-light: 90 50% 50%;
-  --primary-dark: 90 60% 30%;
-  --primary-foreground: 210 20% 8%;
-
-  --secondary: 355 65% 30%;
-  --secondary-light: 355 60% 40%;
-  --secondary-dark: 355 70% 20%;
-  --secondary-foreground: 210 20% 92%;
-
-  /* Muted states */
-  --muted: 210 15% 15%;
-  --muted-foreground: 210 15% 60%;
-
-  /* Accent colors */
-  --accent: 40 95% 55%;
-  --accent-light: 40 90% 65%;
-  --accent-dark: 40 100% 40%;
-  --accent-foreground: 210 20% 8%;
-
-  /* Destructive actions */
-  --destructive: 0 85% 55%;
-  --destructive-foreground: 210 20% 92%;
-
-  /* Borders, inputs, and focus rings */
-  --border: 210 15% 20%;
-  --input: 210 15% 18%;
-  --ring: 90 55% 45%;
-
-  /* Chart colors */
-  --chart-1: 90 45% 50%;
-  --chart-2: 355 45% 45%;
-  --chart-3: 200 35% 55%;
-  --chart-4: 60 55% 60%;
-  --chart-5: 0 0% 50%;
-
-  /* Sidebar colors */
-  --sidebar: var(--primary); /* Header background is now primary */
-  --sidebar-foreground: var(
-    --primary-foreground
-  ); /* Header text is primary-foreground */
-  --sidebar-primary: var(
-    --primary-foreground
-  ); /* Icon color (dark text for contrast) */
-  --sidebar-primary-foreground: var(--primary);
-  --sidebar-accent: var(--accent); /* Accent color for active items */
-  --sidebar-accent-foreground: var(
-    --accent-foreground
-  ); /* Text color on accent */
-  --sidebar-border: var(--primary-dark); /* Darker olive for border */
-  --sidebar-ring: var(--accent);
-  /* end dark mode */
-  /* Define your custom font families */
+  /* Fonts (defined here but also mapped in @theme) */
   --font-heading: 'Montserrat', sans-serif;
   --font-body: 'Open Sans', sans-serif;
 
-  /* Define your custom keyframes */
+  /* --- Light Mode Theme Variables (OKLCH) --- */
+  /* Neutrals */
+  --background: oklch(98% 0.01 240); /* Very light blue-gray */
+  --foreground: oklch(15% 0.05 240); /* Very dark blue-gray */
+  --card: oklch(100% 0 0); /* Pure white */
+  --card-foreground: var(--foreground);
+  --popover: oklch(100% 0 0);
+  --popover-foreground: var(--foreground);
+
+  /* Core Army Colors */
+  --primary: oklch(27% 0.09 110); /* Deep Forest Olive */
+  --primary-light: oklch(37% 0.1 110);
+  --primary-dark: oklch(20% 0.08 110);
+  --primary-foreground: oklch(98% 0 0); /* Near white */
+
+  --secondary: oklch(25% 0.08 355); /* Rich, deep Burgundy/Maroon */
+  --secondary-light: oklch(35% 0.09 355);
+  --secondary-dark: oklch(18% 0.07 355);
+  --secondary-foreground: oklch(98% 0 0);
+
+  /* Muted states */
+  --muted: oklch(90% 0.02 240); /* Softer muted gray */
+  --muted-foreground: oklch(50% 0.02 240); /* Darker muted text */
+
+  /* Accent colors */
+  --accent: oklch(65% 0.23 80); /* Vibrant Goldenrod/Saffron */
+  --accent-light: oklch(75% 0.24 80);
+  --accent-dark: oklch(55% 0.22 80);
+  --accent-foreground: oklch(15% 0.05 240); /* Dark text on vibrant accent */
+
+  /* Destructive */
+  --destructive: oklch(50% 0.15 20); /* Stronger red */
+  --destructive-foreground: oklch(98% 0 0);
+
+  /* Borders, inputs, and focus rings */
+  --border: oklch(88% 0.01 240); /* Cleaner, subtle border */
+  --input: oklch(99% 0 0); /* Very light input */
+  --ring: oklch(40% 0.12 110); /* Primary olive for focus ring */
+
+  /* Chart colors (adjusted to OKLCH for consistency) */
+  --chart-1: oklch(45% 0.12 110);
+  --chart-2: oklch(40% 0.1 355);
+  --chart-3: oklch(50% 0.08 200);
+  --chart-4: oklch(60% 0.15 60);
+  --chart-5: oklch(35% 0.05 240);
+
+  /* Sidebar/Header colors (derived from core colors for consistency) */
+  --sidebar: var(--primary);
+  --sidebar-foreground: var(--primary-foreground);
+  --sidebar-primary: var(--primary-foreground);
+  --sidebar-primary-foreground: var(--primary);
+  --sidebar-accent: var(--accent);
+  --sidebar-accent-foreground: var(--accent-foreground);
+  --sidebar-border: var(--primary-dark);
+  --sidebar-ring: var(--accent);
+}
+
+/*
+  DARK MODE THEME VARIABLES (.dark class)
+  These override the :root variables when the 'dark' class is present on <html>.
+  Adjusted to OKLCH for dark mode.
+*/
+.dark {
+  /* Neutrals */
+  --background: oklch(10% 0.02 240); /* Even deeper charcoal/near black */
+  --foreground: oklch(
+    90% 0.02 240
+  ); /* Slightly less white for softer contrast */
+  --card: oklch(15% 0.03 240); /* Darker card background */
+  --card-foreground: var(--foreground);
+  --popover: oklch(15% 0.03 240);
+  --popover-foreground: var(--foreground);
+
+  /* Core Army Colors */
+  --primary: oklch(
+    45% 0.12 110
+  ); /* Brighter Olive Green for dark mode Header Background */
+  --primary-light: oklch(55% 0.13 110);
+  --primary-dark: oklch(35% 0.1 110);
+  --primary-foreground: oklch(
+    15% 0.05 240
+  ); /* Darker text for contrast on brighter primary */
+
+  --secondary: oklch(35% 0.1 355); /* Richer Maroon */
+  --secondary-light: oklch(45% 0.11 355);
+  --secondary-dark: oklch(28% 0.09 355);
+  --secondary-foreground: oklch(90% 0.02 240);
+
+  /* Muted states */
+  --muted: oklch(20% 0.02 240);
+  --muted-foreground: oklch(60% 0.02 240);
+
+  /* Accent colors */
+  --accent: oklch(70% 0.25 80); /* More vibrant Goldenrod */
+  --accent-light: oklch(80% 0.26 80);
+  --accent-dark: oklch(60% 0.24 80);
+  --accent-foreground: oklch(15% 0.05 240);
+
+  /* Destructive actions */
+  --destructive: oklch(60% 0.18 20);
+  --destructive-foreground: oklch(90% 0.02 240);
+
+  /* Borders, inputs, and focus rings */
+  --border: oklch(25% 0.02 240);
+  --input: oklch(20% 0.02 240);
+  --ring: oklch(50% 0.15 110);
+
+  /* Chart colors */
+  --chart-1: oklch(50% 0.15 110);
+  --chart-2: oklch(45% 0.12 355);
+  --chart-3: oklch(55% 0.1 200);
+  --chart-4: oklch(65% 0.18 60);
+  --chart-5: oklch(40% 0.07 240);
+
+  --sidebar: var(--primary);
+  --sidebar-foreground: var(--primary-foreground);
+  --sidebar-primary: var(--primary-foreground);
+  --sidebar-primary-foreground: var(--primary);
+  --sidebar-accent: var(--accent);
+  --sidebar-accent-foreground: var(--accent-foreground);
+  --sidebar-border: var(--primary-dark);
+  --sidebar-ring: var(--accent);
+}
+
+/*
+  TAILWIND CSS V4 THEME DEFINITION (@theme directive)
+  This is where Tailwind generates its utility classes from your CSS variables.
+  It maps the raw CSS variables (e.g., --primary) to Tailwind's internal naming
+  convention (e.g., color-primary).
+*/
+@theme {
+  /* Radius definitions are fine here as they are directly consumed by Tailwind */
+  --radius: var(--radius);
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-xl: var(--radius-xl);
+
+  /* Font family mappings */
+  --font-heading: var(--font-heading);
+  --font-body: var(--font-body);
+
+  /*
+    COLOR PALETTE MAPPING FOR TAILWIND UTILITIES
+    Use the `color-` prefix for Tailwind to generate utility classes
+    (e.g., bg-primary, text-accent-foreground).
+    These reference the OKLCH variables defined in :root / .dark.
+  */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-primary: var(--primary);
+  --color-primary-light: var(--primary-light);
+  --color-primary-dark: var(--primary-dark);
+  --color-primary-foreground: var(--primary-foreground);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-light: var(--secondary-light);
+  --color-secondary-dark: var(--secondary-dark);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  --color-accent: var(--accent);
+  --color-accent-light: var(--accent-light);
+  --color-accent-dark: var(--accent-dark);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  /*
+    KEYFRAME AND ANIMATION DEFINITIONS (direct CSS syntax within @theme)
+    These map to Tailwind's `animate-{name}` utilities.
+  */
   @keyframes blob {
     0% {
       transform: translate(0px, 0px) scale(1);
@@ -173,41 +262,43 @@
     }
   }
 
-  /* Define your custom animations (mapping keyframes to utility names) */
   --animation-blob: blob 7s infinite cubic-bezier(0.68, -0.55, 0.27, 1.55);
   --animation-fade-in: fade-in 0.5s ease-out forwards;
   --animation-gradient-shift: gradient-shift 8s ease infinite alternate;
   --animation-fade-in-up: fade-in-up 0.3s ease-out forwards;
 
-  /* Define your custom background images (gradients) */
+  /*
+    BACKGROUND IMAGE (GRADIENT) DEFINITIONS
+    These map to Tailwind's `bg-{name}` utilities.
+  */
   --bg-gradient-primary-accent: linear-gradient(
     to right,
-    var(--primary),
-    var(--accent)
+    var(--color-primary),
+    var(--color-accent)
   );
   --bg-gradient-primary-dark-light: linear-gradient(
     to right,
-    var(--primary-dark),
-    var(--primary-light)
+    var(--color-primary-dark),
+    var(--color-primary-light)
   );
   --bg-gradient-secondary-dark-light: linear-gradient(
     to right,
-    var(--secondary-dark),
-    var(--secondary-light)
+    var(--color-secondary-dark),
+    var(--color-secondary-light)
   );
 }
 
-/* Dark mode theme definition */
-
-/* Base layer applies common styles */
+/*
+  Base layer applies common styles to HTML elements.
+  These use the Tailwind-generated utility classes, which in turn
+  reference the CSS variables defined in the @theme block.
+*/
 @layer base {
   * {
-    /* Apply border and outline styles from the theme */
-    @apply border-[--border] outline-[--ring]/50;
+    @apply border-border outline-ring/50;
   }
   body {
-    /* Apply background and foreground colors from the theme */
-    @apply bg-[--background] text-[--foreground] font-[--font-body];
+    @apply bg-background text-foreground font-body;
     /* Subtle background texture for depth */
     background-image: url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%239C9287" fill-opacity="0.05"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zm0-30V0H4v4H0v2h4v4h2V6H4V4z"%3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
   }
@@ -217,9 +308,6 @@
   h4,
   h5,
   h6 {
-    /* Apply heading font from the theme */
-    @apply font-[--font-heading];
+    @apply font-heading;
   }
 }
-
-/* Add any other global utilities or custom styles here if needed */
