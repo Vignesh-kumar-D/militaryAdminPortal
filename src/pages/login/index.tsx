@@ -147,7 +147,7 @@ const LoginPage = () => {
                     <FormLabel className="font-body text-sm text-foreground">
                       {' '}
                       {/* Reduced font size */}
-                      Soldier ID (Email)
+                      Email
                     </FormLabel>
                     <FormControl>
                       <Input
@@ -189,7 +189,7 @@ const LoginPage = () => {
                 className="w-full py-3 sm:py-3.5 font-heading tracking-wide text-base sm:text-lg mt-6 bg-primary text-primary-foreground hover:bg-primary/90 focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background transition-colors duration-200" // Reduced button height and font size, reduced top margin
                 disabled={form.formState.isSubmitting}
               >
-                {form.formState.isSubmitting ? 'Deploying...' : 'Deploy'}
+                {form.formState.isSubmitting ? 'Submitting...' : 'Submit'}
               </Button>
             </form>
           </Form>
