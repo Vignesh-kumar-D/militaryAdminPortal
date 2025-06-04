@@ -60,7 +60,68 @@
   --chart-3: 200 25% 45%;
   --chart-4: 60 45% 50%;
   --chart-5: 0 0% 30%;
+  /* Dark mode  */
+  /* Neutrals - Deeper, but still distinct */
+  --background: 210 20% 6%;
+  --foreground: 210 20% 92%;
+  --card: 210 20% 9%;
+  --card-foreground: var(--foreground);
+  --popover: 210 20% 9%;
+  --popover-foreground: var(--foreground);
 
+  /* Core Army Colors - Maintain vibrancy on dark background */
+  --primary: 90 55% 40%;
+  --primary-light: 90 50% 50%;
+  --primary-dark: 90 60% 30%;
+  --primary-foreground: 210 20% 8%;
+
+  --secondary: 355 65% 30%;
+  --secondary-light: 355 60% 40%;
+  --secondary-dark: 355 70% 20%;
+  --secondary-foreground: 210 20% 92%;
+
+  /* Muted states */
+  --muted: 210 15% 15%;
+  --muted-foreground: 210 15% 60%;
+
+  /* Accent colors */
+  --accent: 40 95% 55%;
+  --accent-light: 40 90% 65%;
+  --accent-dark: 40 100% 40%;
+  --accent-foreground: 210 20% 8%;
+
+  /* Destructive actions */
+  --destructive: 0 85% 55%;
+  --destructive-foreground: 210 20% 92%;
+
+  /* Borders, inputs, and focus rings */
+  --border: 210 15% 20%;
+  --input: 210 15% 18%;
+  --ring: 90 55% 45%;
+
+  /* Chart colors */
+  --chart-1: 90 45% 50%;
+  --chart-2: 355 45% 45%;
+  --chart-3: 200 35% 55%;
+  --chart-4: 60 55% 60%;
+  --chart-5: 0 0% 50%;
+
+  /* Sidebar colors */
+  --sidebar: var(--primary); /* Header background is now primary */
+  --sidebar-foreground: var(
+    --primary-foreground
+  ); /* Header text is primary-foreground */
+  --sidebar-primary: var(
+    --primary-foreground
+  ); /* Icon color (dark text for contrast) */
+  --sidebar-primary-foreground: var(--primary);
+  --sidebar-accent: var(--accent); /* Accent color for active items */
+  --sidebar-accent-foreground: var(
+    --accent-foreground
+  ); /* Text color on accent */
+  --sidebar-border: var(--primary-dark); /* Darker olive for border */
+  --sidebar-ring: var(--accent);
+  /* end dark mode */
   /* Define your custom font families */
   --font-heading: 'Montserrat', sans-serif;
   --font-body: 'Open Sans', sans-serif;
