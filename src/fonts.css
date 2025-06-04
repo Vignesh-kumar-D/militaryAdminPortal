@@ -1,0 +1,62 @@
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/src/assets/fonts/Montserrat/static/Montserrat-Regular.ttf')
+    format('ttf');
+  font-display: swap; /* Best practice for font loading */
+}
+
+@font-face {
+  font-family: 'Montserrat-Medium';
+  font-style: normal;
+  font-weight: 500; /* Medium */
+  src: url('/src/assets/fonts/Montserrat/static/Montserrat-Medium.ttf')
+    format('ttf');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat-SemiBold';
+  font-style: normal;
+  font-weight: 600; /* SemiBold */
+  src: url('/src/assets/fonts/Montserrat/static/Montserrat-SemiBold.ttf')
+    format('ttf');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat-Bold';
+  font-style: normal;
+  font-weight: 700; /* Bold */
+  src: url('/src/assets/fonts/Montserrat/static/Montserrat-Bold.ttf')
+    format('ttf');
+  font-display: swap;
+}
+
+/* Open Sans */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/src/assets/fonts/Open_Sans/static/OpenSans-Regular.ttf')
+    format('ttf');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Open Sans-SemiBold';
+  font-style: normal;
+  font-weight: 600; /* SemiBold */
+  src: url('/src/assets/fonts/Open_Sans/static/OpenSans-SemiBold.ttf')
+    format('ttf');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Open Sans-Bold';
+  font-style: normal;
+  font-weight: 700; /* Bold */
+  src: url('/src/assets/fonts/Open_Sans/static/OpenSans-Bold.ttf') format('ttf');
+  font-display: swap;
+}

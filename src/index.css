@@ -1,77 +1,9 @@
+@import './fonts.css';
+
 @import 'tailwindcss';
 
-/* @tailwind base;
-@tailwind components;
-@tailwind utilities; */
-
-/* :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-} */
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-}
+@tailwind utilities;
+/* Montserrat */
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
@@ -109,82 +41,193 @@ button:focus-visible {
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  --font-heading: 'Montserrat', 'Arial', 'sans-serif';
+  --font-body: 'Open Sans', 'Arial', 'sans-serif';
 }
 
+/* --- */
+
+/* Light Mode Theme Variables (:root) 
+  Adjusted to reflect Indian Army aesthetics: 
+  Olive Green/Khaki primary, Maroon secondary, subdued neutrals.
+*/
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+
+  /* Neutrals */
+  --background: oklch(0.98 0.01 90); /* Very light, desaturated green/khaki */
+  --foreground: oklch(0.18 0.01 90); /* Dark, deep charcoal/brown */
+  --card: oklch(1 0 0); /* Pure white for cards, for contrast */
+  --card-foreground: oklch(0.18 0.01 90); /* Same as foreground */
+  --popover: oklch(1 0 0); /* Pure white for popovers */
+  --popover-foreground: oklch(0.18 0.01 90); /* Same as foreground */
+
+  /* Core Army Colors */
+  --primary: oklch(
+    0.35 0.1 110
+  ); /* Deep Olive Green/Khaki for primary actions */
+  --primary-foreground: oklch(0.98 0 0); /* Near white for text on primary */
+
+  --secondary: oklch(
+    0.35 0.15 10
+  ); /* Deep Maroon/Burgundy for secondary actions */
+  --secondary-foreground: oklch(
+    0.98 0 0
+  ); /* Near white for text on secondary */
+
+  /* Muted states for less emphasis */
+  --muted: oklch(
+    0.9 0.02 90
+  ); /* Muted background, slightly darker khaki/grey */
+  --muted-foreground: oklch(0.45 0.01 90); /* Muted foreground text */
+
+  /* Accent colors (use sparingly) */
+  --accent: oklch(0.9 0.02 90); /* Similar to muted background */
+  --accent-foreground: oklch(0.18 0.01 90); /* Same as foreground */
+
+  /* Destructive actions (often red) */
+  --destructive: oklch(0.577 0.245 27.325); /* Retained existing strong red */
+  --destructive-foreground: oklch(
+    0.98 0 0
+  ); /* Near white for text on destructive */
+
+  /* Borders, inputs, and focus rings */
+  --border: oklch(0.7 0.01 90); /* A mid-tone khaki/grey border */
+  --input: oklch(0.95 0 0); /* Lighter input background */
+  --ring: oklch(0.35 0.1 110); /* Primary olive for focus ring */
+
+  /* Chart colors (modify as needed for army theme if charts are used) */
+  --chart-1: oklch(0.45 0.15 110); /* Darker olive */
+  --chart-2: oklch(0.6 0.1 70); /* Muted brown */
+  --chart-3: oklch(0.5 0.1 10); /* Darker maroon */
+  --chart-4: oklch(0.7 0.05 180); /* Muted blue-grey */
+  --chart-5: oklch(0.8 0.02 0); /* Light warm grey */
+
+  /* Sidebar colors (adjust if your sidebar has specific styling) */
+  --sidebar: oklch(0.18 0.01 90); /* Dark background for sidebar */
+  --sidebar-foreground: oklch(0.98 0 0); /* Light text */
+  --sidebar-primary: oklch(
+    0.35 0.1 110
+  ); /* Olive for sidebar primary links/buttons */
+  --sidebar-primary-foreground: oklch(0.98 0 0); /* Light text on primary */
+  --sidebar-accent: oklch(0.9 0.02 90); /* Muted background for hover/active */
+  --sidebar-accent-foreground: oklch(0.18 0.01 90); /* Dark text on accent */
+  --sidebar-border: oklch(0.35 0.01 90); /* Darker border */
+  --sidebar-ring: oklch(0.35 0.1 110); /* Olive ring */
 }
 
+/* --- */
+
+/* Dark Mode Theme Variables (.dark) 
+  Adjusted for a deeper, more robust feel in dark mode.
+*/
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+  /* Neutrals */
+  --background: oklch(0.12 0.01 90); /* Very dark, deep desaturated green */
+  --foreground: oklch(0.95 0 0); /* Light text */
+  --card: oklch(0.18 0.01 90); /* Darker card background */
+  --card-foreground: oklch(0.95 0 0);
+  --popover: oklch(0.18 0.01 90);
+  --popover-foreground: oklch(0.95 0 0);
+
+  /* Core Army Colors */
+  --primary: oklch(0.6 0.15 110); /* Lighter olive for primary actions */
+  --primary-foreground: oklch(0.12 0.01 90); /* Dark text on primary */
+
+  --secondary: oklch(0.55 0.2 10); /* Slightly brighter maroon for secondary */
+  --secondary-foreground: oklch(0.95 0 0);
+
+  /* Muted states */
+  --muted: oklch(0.25 0.02 90);
+  --muted-foreground: oklch(0.6 0.01 90);
+
+  /* Accent colors */
+  --accent: oklch(0.25 0.02 90);
+  --accent-foreground: oklch(0.95 0 0);
+
+  /* Destructive actions */
+  --destructive: oklch(0.704 0.191 22.216); /* Retained existing red */
+  --destructive-foreground: oklch(0.95 0 0);
+
+  /* Borders, inputs, and focus rings */
+  --border: oklch(0.3 0.01 90); /* Darker border */
+  --input: oklch(0.25 0.02 90); /* Darker input background */
+  --ring: oklch(0.6 0.15 110); /* Primary olive for focus ring */
+
+  /* Chart colors */
+  --chart-1: oklch(0.6 0.2 110);
+  --chart-2: oklch(0.75 0.15 70);
+  --chart-3: oklch(0.65 0.15 10);
+  --chart-4: oklch(0.8 0.08 180);
+  --chart-5: oklch(0.9 0.05 0);
+
+  /* Sidebar colors */
+  --sidebar: oklch(0.08 0.01 90); /* Even darker background for sidebar */
+  --sidebar-foreground: oklch(0.95 0 0);
+  --sidebar-primary: oklch(0.6 0.2 110);
+  --sidebar-primary-foreground: oklch(0.12 0.01 90);
+  --sidebar-accent: oklch(0.25 0.02 90);
+  --sidebar-accent-foreground: oklch(0.95 0 0);
+  --sidebar-border: oklch(0.2 0.01 90);
+  --sidebar-ring: oklch(0.6 0.15 110);
+  --background: 220 20% 9%; /* Deep Charcoal / Dark Blue-Gray */
+  --foreground: 210 20% 98%; /* Near White */
+
+  --card: 220 20% 12%; /* Slightly lighter than background for cards */
+  --card-foreground: 210 20% 98%;
+
+  --popover: 220 20% 12%;
+  --popover-foreground: 210 20% 98%;
+
+  --primary: 210 90% 45%; /* Vibrant Medium Blue */
+  --primary-foreground: 210 20% 98%;
+
+  --secondary: 215 15% 25%; /* Muted Gray for secondary elements */
+  --secondary-foreground: 210 20% 98%;
+
+  --muted: 215 15% 20%; /* Even more muted gray */
+  --muted-foreground: 215 15% 65%; /* Lighter gray for muted text */
+
+  --accent: 38 90% 55%; /* Vibrant Orange-Yellow for highlights */
+  --accent-foreground: 210 20% 9%;
+
+  --destructive: 0 80% 50%; /* Standard Red */
+  --destructive-foreground: 210 20% 98%;
+
+  --border: 215 15% 25%; /* Dark gray for borders */
+  --input: 215 15% 25%; /* Dark gray for inputs */
+  --ring: 210 90% 45%; /* Primary color for focus rings */
+
+  --radius: 0.75rem; /* Standard border radius for components */
 }
 
+/* --- */
+
+/* Base layer applies common styles */
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-body;
+    background: radial-gradient(
+        at center top,
+        hsl(var(--primary) / 0.05),
+        hsl(var(--background))
+      ),
+      radial-gradient(
+        at center bottom,
+        hsl(var(--accent) / 0.05),
+        hsl(var(--background))
+      );
+    background-blend-mode: overlay; /* Blends the gradients nicely */
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading;
   }
 }
