@@ -12,7 +12,7 @@ import {
 } from '../../components/ui/card';
 import { Input } from '../../components/ui/input';
 import { Button } from '../../components/ui/button';
-
+import { toast } from 'sonner';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -56,6 +56,7 @@ const LoginPage = () => {
 
     try {
       await signInWithEmailAndPassword(auth, data.email, data.password);
+      toast.success('Successfully logged In!');
       navigate('/dashboard');
     } catch (err) {
       const error = err as ErrorCode;
@@ -87,7 +88,7 @@ const LoginPage = () => {
           errorMessage = 'An unexpected error occurred. Please try again.';
           break;
       }
-      console.error('Firebase Auth Error:', error);
+      toast.error('Firebase Auth Error', { description: error.message });
 
       form.setError(
         fieldToFocus,

@@ -5,7 +5,9 @@ import HomePage from './pages/dashboard';
 import Header from './components/shared/Header';
 import BottomNavbar from './components/shared/BottomNavbar';
 import { useFirebase } from './contexts/useFirebase';
+import ProfilePage from './pages/profile';
 import ProtectedRoute from './ProtectedRoute';
+import { Toaster } from 'sonner';
 // Placeholder pages for the 5 options + Profile
 const PersonalDetailsPage = () => (
   <div className="pt-10rem pb-10rem min-h-screen bg-background text-foreground flex items-center justify-center font-heading text-4xl">
@@ -32,11 +34,6 @@ const SchedulePage = () => (
     Schedule Page
   </div>
 );
-const ProfilePage = () => (
-  <div className="pt-10rem pb-10rem min-h-screen bg-background text-foreground flex items-center justify-center font-heading text-4xl">
-    Profile Page
-  </div>
-);
 
 function App() {
   const { currentUser } = useFirebase();
@@ -52,7 +49,7 @@ function App() {
         <Routes>
           <Route
             path="/login"
-            element={currentUser ? <LoginPage /> : <Navigate to="/dashboard" />}
+            element={currentUser ? <Navigate to="/dashboard" /> : <LoginPage />}
           />
           <Route element={<ProtectedRoute />}>
             <Route path="/dashboard" element={<HomePage />} />
@@ -70,6 +67,7 @@ function App() {
 
       {/* Bottom Navigation for mobile */}
       {!!currentUser && <BottomNavbar />}
+      <Toaster richColors position="top-center" />
     </>
   );
 }
