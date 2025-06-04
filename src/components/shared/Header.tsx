@@ -9,7 +9,6 @@ import {
   HelpCircle,
   Calendar,
   CircleUser,
-  // Adding a Menu icon for potential future use (e.g. mobile offcanvas)
 } from 'lucide-react';
 
 // Define your navigation items
@@ -25,37 +24,62 @@ const Header: React.FC = () => {
   const location = useLocation();
 
   return (
-    <header className="hidden md:flex items-center justify-between w-full h-8rem bg-primary text-primary-foreground px-4rem shadow-lg border-b border-primary-foreground/20">
-      {/* Home / App Title */}
-      <Link to="/dashboard" className="flex items-center space-x-1.5rem group">
-        <Home className="size-3.5rem group-hover:scale-110 transition-transform duration-200" />
+    <header className="hidden md:flex items-center w-full h-20 bg-sidebar text-sidebar-foreground px-6 py-4 shadow-xl border-b border-sidebar-border relative z-20">
+      {/* Home / App Title or Logo - Left aligned */}
+      <Link
+        to="/dashboard"
+        className="flex items-center space-x-3 group mr-auto"
+      >
+        <Home className="size-8 group-hover:scale-110 group-hover:text-sidebar-accent transition-transform duration-200 " />
+        <span className="font-heading text-2xl font-bold tracking-tight hidden lg:inline group-hover:scale-110 group-hover:text-sidebar-accent">
+          Home
+        </span>
       </Link>
 
-      {/* Navigation Links */}
-      <nav className="flex  justify-between ">
+      {/* Navigation Links - Centered and Spaced Out */}
+      <nav className="flex-1 flex justify-center gap-x-8 lg:gap-x-12">
         {navItems.map((item) => (
           <Link
             key={item.name}
             to={item.path}
-            className={`flex flex-col items-center group text-lg font-body transition-colors duration-200 py-1rem px-2rem rounded-md
+            className={`
+              flex flex-col items-center justify-center text-center
+              group text-base font-body font-medium transition-colors duration-200
+              py-2 px-3 rounded-md relative overflow-hidden
+              
+              ${
+                // Active state: text is accent, background subtle, and full background fill for `before`
+                location.pathname === item.path
+                  ? 'text-sidebar-accent font-semibold' // Active text is vibrant goldenrod
+                  : 'text-sidebar-foreground hover:text-sidebar-accent' // Default text is white, turns goldenrod on hover
+              }
+
+              // Subtle hover/active background overlay (white with low opacity)
+              before:absolute before:inset-0 before:origin-top-left before:scale-x-0 before:bg-sidebar-primary/10 before:transition-transform before:duration-300 before:ease-out
               ${
                 location.pathname === item.path
-                  ? 'text-accent font-semibold bg-primary-foreground/10' // More prominent active state
-                  : 'text-primary-foreground hover:text-accent-foreground hover:bg-primary-foreground/5'
+                  ? 'before:scale-x-100'
+                  : 'group-hover:before:scale-x-100'
               }
             `}
           >
-            <item.icon className="size-2.5rem mb-0.5rem group-hover:scale-110 transition-transform duration-200" />
-            <span>{item.name}</span>
+            {/* Active state indicator - vibrant goldenrod underline */}
+            {location.pathname === item.path && (
+              <span className="absolute bottom-0 left-0 w-full h-0.5 bg-sidebar-accent animate-fade-in-up"></span>
+            )}
+
+            {/* Icons should inherit parent text color, or be explicitly set to primary-foreground then accent on hover/active */}
+            <item.icon className="size-6 mb-1 group-hover:scale-105 transition-transform duration-200" />
+            <span className="whitespace-nowrap">{item.name}</span>
           </Link>
         ))}
       </nav>
 
-      {/* Profile Icon */}
-      <Link to="/profile" className="flex items-center space-x-1rem group">
-        <CircleUser className="size-3.5rem group-hover:scale-110 transition-transform duration-200" />
-        <span className="font-body text-xl hidden lg:inline group-hover:text-accent-foreground transition-colors duration-200">
-          Profile
+      {/* Profile Icon - Right aligned */}
+      <Link to="/profile" className="flex items-center space-x-2 group ml-auto">
+        <CircleUser className="size-8  group-hover:scale-110 group-hover:text-sidebar-accent transition-transform duration-200" />
+        <span className="font-body text-lg font-medium hidden lg:inline text-sidebar-foreground group-hover:scale-110 group-hover:text-sidebar-accent transition-colors duration-200">
+          My Profile
         </span>
       </Link>
     </header>

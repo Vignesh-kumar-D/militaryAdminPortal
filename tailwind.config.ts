@@ -1,16 +1,12 @@
+// tailwind.config.js
 import type { Config } from 'tailwindcss';
 import animate from 'tailwindcss-animate';
 import defaultTheme from 'tailwindcss/defaultTheme';
 
 export default {
-  darkMode: ['class', ''], // Ensure this is just 'class' if you're toggling with a class
+  darkMode: ['class', ''],
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx,mdx}'],
   theme: {
-    fontFamily: {
-      sans: ['Open Sans', ...defaultTheme.fontFamily.sans],
-      heading: ['Montserrat', ...defaultTheme.fontFamily.sans],
-      body: ['Open Sans', ...defaultTheme.fontFamily.sans],
-    },
     container: {
       center: true,
       padding: '2rem',
@@ -27,10 +23,14 @@ export default {
         foreground: 'hsl(var(--foreground))',
         primary: {
           DEFAULT: 'hsl(var(--primary))',
+          light: 'hsl(var(--primary-light))', // New shade
+          dark: 'hsl(var(--primary-dark))', // New shade
           foreground: 'hsl(var(--primary-foreground))',
         },
         secondary: {
           DEFAULT: 'hsl(var(--secondary))',
+          light: 'hsl(var(--secondary-light))', // New shade
+          dark: 'hsl(var(--secondary-dark))', // New shade
           foreground: 'hsl(var(--secondary-foreground))',
         },
         destructive: {
@@ -43,6 +43,8 @@ export default {
         },
         accent: {
           DEFAULT: 'hsl(var(--accent))',
+          light: 'hsl(var(--accent-light))', // New shade
+          dark: 'hsl(var(--accent-dark))', // New shade
           foreground: 'hsl(var(--accent-foreground))',
         },
         popover: {
@@ -53,7 +55,6 @@ export default {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
         },
-        // --- NEW CUSTOM COLORS FOR ARMY THEME ---
         sidebar: {
           DEFAULT: 'hsl(var(--sidebar))',
           foreground: 'hsl(var(--sidebar-foreground))',
@@ -75,20 +76,61 @@ export default {
           '4': 'hsl(var(--chart-4))',
           '5': 'hsl(var(--chart-5))',
         },
-        // You can add more specific army-related colors if needed for badges, flags, etc.
-        // 'ia-badge-gold': 'hsl(var(--ia-badge-gold))',
-        // 'ia-flag-saffron': 'hsl(var(--ia-flag-saffron))',
-        // 'ia-flag-green': 'hsl(var(--ia-flag-green))',
       },
       borderRadius: {
         lg: 'var(--radius)',
-        md: 'var(--radius-md)', // Use defined CSS variables
-        sm: 'var(--radius-sm)', // Use defined CSS variables
+        md: 'var(--radius-md)',
+        sm: 'var(--radius-sm)',
       },
       fontFamily: {
         sans: ['Open Sans', ...defaultTheme.fontFamily.sans],
         heading: ['Montserrat', ...defaultTheme.fontFamily.sans],
         body: ['Open Sans', ...defaultTheme.fontFamily.sans],
+      },
+      keyframes: {
+        blob: {
+          '0%': {
+            transform: 'translate(0px, 0px) scale(1)',
+          },
+          '33%': {
+            transform: 'translate(30px, -50px) scale(1.1)',
+          },
+          '66%': {
+            transform: 'translate(-20px, 20px) scale(0.9)',
+          },
+          '100%': {
+            transform: 'translate(0px, 0px) scale(1)',
+          },
+        },
+        'fade-in': {
+          '0%': { opacity: '0', transform: 'translateY(-10px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        'gradient-shift': {
+          // New Keyframe for subtle gradient animation
+          '0%': { backgroundPosition: '0% 50%' },
+          '50%': { backgroundPosition: '100% 50%' },
+          '100%': { backgroundPosition: '0% 50%' },
+        },
+        'fade-in-up': {
+          '0%': { opacity: '0', transform: 'translateY(10px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+      },
+      animation: {
+        blob: 'blob 7s infinite cubic-bezier(0.68, -0.55, 0.27, 1.55)',
+        'fade-in': 'fade-in 0.5s ease-out forwards',
+        'gradient-shift': 'gradient-shift 8s ease infinite alternate', // New animation
+        'fade-in-up': 'fade-in-up 0.3s ease-out forwards',
+      },
+      backgroundImage: {
+        // Define custom gradients
+        'gradient-primary-accent':
+          'linear-gradient(to right, var(--primary), var(--accent))',
+        'gradient-primary-dark-light':
+          'linear-gradient(to right, var(--primary-dark), var(--primary-light))',
+        'gradient-secondary-dark-light':
+          'linear-gradient(to right, var(--secondary-dark), var(--secondary-light))',
       },
     },
   },

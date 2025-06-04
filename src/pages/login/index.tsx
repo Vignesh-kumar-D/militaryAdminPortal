@@ -1,5 +1,4 @@
 // src/pages/LoginPage.tsx
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../lib/firebase'; // Adjust path if needed
@@ -10,9 +9,9 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
+} from '../../components/ui/card';
+import { Input } from '../../components/ui/input';
+import { Button } from '../../components/ui/button';
 
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -25,8 +24,11 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@/components/ui/form';
+} from '../../components/ui/form';
 
+interface ErrorCode extends Error {
+  code: string;
+}
 const loginSchema = z.object({
   email: z
     .string()
@@ -56,7 +58,7 @@ const LoginPage = () => {
       await signInWithEmailAndPassword(auth, data.email, data.password);
       navigate('/dashboard');
     } catch (err) {
-      const error = err as any;
+      const error = err as ErrorCode;
       let errorMessage = 'Login failed. Please check your credentials.';
       let fieldToFocus: 'email' | 'password' | 'root.firebase' =
         'root.firebase';
@@ -168,12 +170,11 @@ const LoginPage = () => {
                     <FormLabel className="font-body text-sm text-foreground">
                       {' '}
                       {/* Reduced font size */}
-                      Secure Password
+                      Password
                     </FormLabel>
                     <FormControl>
                       <Input
                         type="password"
-                        placeholder="••••••••"
                         {...field}
                         className="font-body text-sm py-2.5 px-3 border-input focus:border-primary focus:ring-primary/50 transition-all duration-200" // Reduced input height and padding
                       />

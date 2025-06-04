@@ -1,10 +1,9 @@
 // src/App.jsx
-import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom'; // Import necessary components
 import LoginPage from './pages/login';
 import HomePage from './pages/dashboard';
 import Header from './components/shared/Header';
-import BottomNavbar from './components/Shared/BottomNavbar';
+import BottomNavbar from './components/shared/BottomNavbar';
 
 // Placeholder pages for the 5 options + Profile
 const PersonalDetailsPage = () => (
@@ -39,16 +38,13 @@ const ProfilePage = () => (
 );
 
 function App() {
-  // You would typically manage authentication state here or via Context
-  // For now, we'll just allow direct access to /login and /dashboard
-
   return (
     <>
       {/* Header for desktop/tablet */}
       <Header />
 
       {/* Main content area, adjusted for fixed header/footer */}
-      <main className="pt-8rem pb-8rem md:pt-10rem md:pb-10rem">
+      <main className="pt-8rem pb-8rem md:pt-10rem md:pb-10rem bg-background">
         {' '}
         {/* Add padding to account for fixed headers */}
         <Routes>
