@@ -26,26 +26,48 @@ const BottomNavbar: React.FC = () => {
   const location = useLocation();
 
   return (
-    <footer className="fixed bottom-0 left-0 w-full md:hidden bg-card border-t border-border shadow-2xl z-50 py-1.2rem">
+    <footer className="fixed bottom-0 left-0 w-full md:hidden bg-primary text-primary-foreground border-t border-border shadow-2xl z-50 py-1.2rem">
       <nav className="flex justify-around items-center h-full px-0.5rem">
-        {navItems.map((item) => (
-          <Link
-            key={item.name}
-            to={item.path}
-            className={`flex flex-col items-center flex-1 text-center space-y-0.5rem p-0.8rem rounded-md transition-colors duration-200
+        {navItems.map((item) => {
+          const isActive = location.pathname === item.path;
+          return (
+            <Link
+              key={item.name}
+              to={item.path}
+              // Added 'group' class for hover effects on children
+              className={`flex flex-col items-center flex-1 text-center space-y-0.5rem p-0.8rem rounded-md relative overflow-hidden
+              transition-colors duration-200 group
+              
               ${
-                location.pathname === item.path
-                  ? 'text-primary font-semibold bg-primary/10' // Stronger active state for mobile
-                  : 'text-muted-foreground hover:text-foreground hover:bg-card-foreground/5'
+                // Active state: text is vibrant, background subtle fill
+                isActive
+                  ? 'text-sidebar-accent font-semibold' // Active text is vibrant goldenrod (using sidebar-accent as reference)
+                  : 'text-muted-foreground hover:text-sidebar-accent' // Default text is muted, turns goldenrod on hover
+              }
+
+              // Subtle hover/active background overlay (white with low opacity)
+              before:absolute before:inset-0 before:origin-top-left before:scale-x-0 before:bg-primary/10 before:transition-transform before:duration-300 before:ease-out
+              ${
+                isActive
+                  ? 'before:scale-x-100' // Active state always has background fill
+                  : 'group-hover:before:scale-x-100' // Hover state also has background fill
               }
             `}
-          >
-            <item.icon className="size-2.5rem" />
-            <span className="text-xs font-body leading-tight mt-0.5rem">
-              {item.name}
-            </span>
-          </Link>
-        ))}
+            >
+              {/* Active state indicator - vibrant goldenrod underline (optional, if you want this on mobile too) */}
+              {isActive && (
+                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-sidebar-accent animate-fade-in-up"></span>
+              )}
+
+              {/* Icon */}
+              <item.icon className="size-2.5rem transition-transform duration-200 group-hover:scale-105" />
+              {/* Text */}
+              <span className="text-xs font-body leading-tight mt-0.5rem whitespace-nowrap">
+                {item.name}
+              </span>
+            </Link>
+          );
+        })}
       </nav>
     </footer>
   );
