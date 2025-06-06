@@ -23,7 +23,7 @@ const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 
 // Get a reference to the Firestore service
-export const db = getFirestore(app);
+export const db = getFirestore(app, 'solider-details');
 
 // Export the app instance if needed
 export default app;
