@@ -6,34 +6,84 @@ import {
 } from '../../../components/ui/card';
 import { Input } from '../../../components/ui/input';
 import { Label } from '../../../components/ui/label';
-import { Button } from '../../../components/ui/button';
-import { Plus } from 'lucide-react';
+import type { FormComponentProps } from '../AddNewForm';
 
-const DissertationDetails = () => {
+const DissertationDetails = ({ register, errors }: FormComponentProps) => {
   return (
     <Card>
-      <CardHeader className="flex flex-row items-center justify-between">
+      <CardHeader>
         <CardTitle>Dissertation Details</CardTitle>
-        <Button size="sm">
-          <Plus className="h-4 w-4 mr-2" />
-          Add Dissertation
-        </Button>
       </CardHeader>
       <CardContent>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           <div className="space-y-2">
-            <Label htmlFor="group">Group</Label>
-            <Input id="group" placeholder="Enter Group" />
+            <Label htmlFor="dissertationTitle">Title</Label>
+            <Input
+              id="dissertationTitle"
+              placeholder="Enter Title"
+              {...register('dissertationTitle')}
+            />
+            {errors.dissertationTitle && (
+              <p className="text-sm text-red-500">
+                {errors.dissertationTitle.message}
+              </p>
+            )}
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="subGroup">Sub Group</Label>
-            <Input id="subGroup" placeholder="Enter Sub Group" />
+            <Label htmlFor="dissertationFrom">From</Label>
+            <Input
+              id="dissertationFrom"
+              type="date"
+              {...register('dissertationFrom')}
+            />
+            {errors.dissertationFrom && (
+              <p className="text-sm text-red-500">
+                {errors.dissertationFrom.message}
+              </p>
+            )}
           </div>
 
-          <div className="space-y-2 col-span-full">
-            <Label htmlFor="topic">Topic</Label>
-            <Input id="topic" placeholder="Enter Topic" />
+          <div className="space-y-2">
+            <Label htmlFor="dissertationTo">To</Label>
+            <Input
+              id="dissertationTo"
+              type="date"
+              {...register('dissertationTo')}
+            />
+            {errors.dissertationTo && (
+              <p className="text-sm text-red-500">
+                {errors.dissertationTo.message}
+              </p>
+            )}
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="dissertationGrade">Grade</Label>
+            <Input
+              id="dissertationGrade"
+              placeholder="Enter Grade"
+              {...register('dissertationGrade')}
+            />
+            {errors.dissertationGrade && (
+              <p className="text-sm text-red-500">
+                {errors.dissertationGrade.message}
+              </p>
+            )}
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="dissertationInstitute">Institute</Label>
+            <Input
+              id="dissertationInstitute"
+              placeholder="Enter Institute"
+              {...register('dissertationInstitute')}
+            />
+            {errors.dissertationInstitute && (
+              <p className="text-sm text-red-500">
+                {errors.dissertationInstitute.message}
+              </p>
+            )}
           </div>
         </div>
       </CardContent>

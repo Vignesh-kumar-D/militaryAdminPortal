@@ -15,8 +15,18 @@ import {
 } from '../../../components/ui/select';
 import { Button } from '../../../components/ui/button';
 import { Plus } from 'lucide-react';
+import type { UseFormRegister, FieldErrors } from 'react-hook-form';
+import type { FormData } from '../AddNewForm';
 
-const CivilQualificationDetails = () => {
+interface CivilQualificationDetailsProps {
+  register: UseFormRegister<FormData>;
+  errors: FieldErrors<FormData>;
+}
+
+const CivilQualificationDetails = ({
+  register,
+  errors,
+}: CivilQualificationDetailsProps) => {
   return (
     <Card>
       <CardHeader className="flex flex-row items-center justify-between">
@@ -34,38 +44,75 @@ const CivilQualificationDetails = () => {
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="qualification">Qualification</Label>
-            <Input id="qualification" placeholder="Enter Qualification" />
+            <Label htmlFor="civilQualification">Qualification</Label>
+            <Input
+              id="civilQualification"
+              placeholder="Enter Qualification"
+              {...register('civilQualification')}
+            />
+            {errors.civilQualification && (
+              <p className="text-sm text-red-500">
+                {errors.civilQualification.message}
+              </p>
+            )}
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="subject">Subject</Label>
-            <Input id="subject" placeholder="Enter Subject" />
+            <Label htmlFor="civilSubject">Subject</Label>
+            <Input
+              id="civilSubject"
+              placeholder="Enter Subject"
+              {...register('civilSubject')}
+            />
+            {errors.civilSubject && (
+              <p className="text-sm text-red-500">
+                {errors.civilSubject.message}
+              </p>
+            )}
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="grade">Grade</Label>
-            <Select>
-              <SelectTrigger>
-                <SelectValue placeholder="Select grade" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="a">A</SelectItem>
-                <SelectItem value="b">B</SelectItem>
-                <SelectItem value="c">C</SelectItem>
-                <SelectItem value="d">D</SelectItem>
-              </SelectContent>
-            </Select>
+            <Label htmlFor="civilGrade">Grade</Label>
+            <Input
+              id="civilGrade"
+              placeholder="Enter Grade"
+              {...register('civilGrade')}
+            />
+            {errors.civilGrade && (
+              <p className="text-sm text-red-500">
+                {errors.civilGrade.message}
+              </p>
+            )}
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="year">Year</Label>
-            <Input id="year" type="number" placeholder="Enter Year" />
+            <Label htmlFor="civilFrom">From</Label>
+            <Input id="civilFrom" type="date" {...register('civilFrom')} />
+            {errors.civilFrom && (
+              <p className="text-sm text-red-500">{errors.civilFrom.message}</p>
+            )}
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="institution">Institution</Label>
-            <Input id="institution" placeholder="Enter Institution" />
+            <Label htmlFor="civilTo">To</Label>
+            <Input id="civilTo" type="date" {...register('civilTo')} />
+            {errors.civilTo && (
+              <p className="text-sm text-red-500">{errors.civilTo.message}</p>
+            )}
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="civilInstitute">Institute</Label>
+            <Input
+              id="civilInstitute"
+              placeholder="Enter Institute"
+              {...register('civilInstitute')}
+            />
+            {errors.civilInstitute && (
+              <p className="text-sm text-red-500">
+                {errors.civilInstitute.message}
+              </p>
+            )}
           </div>
 
           <div className="space-y-2">

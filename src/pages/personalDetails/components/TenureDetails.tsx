@@ -15,8 +15,9 @@ import {
 } from '../../../components/ui/select';
 import { Button } from '../../../components/ui/button';
 import { Plus } from 'lucide-react';
+import type { FormComponentProps } from '../AddNewForm';
 
-const TenureDetails = () => {
+const TenureDetails = ({ register, errors }: FormComponentProps) => {
   return (
     <Card>
       <CardHeader className="flex flex-row items-center justify-between">
@@ -29,13 +30,61 @@ const TenureDetails = () => {
       <CardContent>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           <div className="space-y-2">
-            <Label htmlFor="rankAppt">Rank / Appt</Label>
-            <Input id="rankAppt" placeholder="Enter Rank/Appt" />
+            <Label htmlFor="from">From</Label>
+            <Input id="from" type="date" {...register('from')} />
+            {errors.from && (
+              <p className="text-sm text-red-500">{errors.from.message}</p>
+            )}
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="unit">Unit</Label>
-            <Input id="unit" placeholder="Enter Unit" />
+            <Label htmlFor="to">To</Label>
+            <Input id="to" type="date" {...register('to')} />
+            {errors.to && (
+              <p className="text-sm text-red-500">{errors.to.message}</p>
+            )}
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="tenureRank">Rank</Label>
+            <Input
+              id="tenureRank"
+              placeholder="Enter Rank"
+              {...register('tenureRank')}
+            />
+            {errors.tenureRank && (
+              <p className="text-sm text-red-500">
+                {errors.tenureRank.message}
+              </p>
+            )}
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="tenureAppt">Appointment</Label>
+            <Input
+              id="tenureAppt"
+              placeholder="Enter Appointment"
+              {...register('tenureAppt')}
+            />
+            {errors.tenureAppt && (
+              <p className="text-sm text-red-500">
+                {errors.tenureAppt.message}
+              </p>
+            )}
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="tenureUnit">Unit</Label>
+            <Input
+              id="tenureUnit"
+              placeholder="Enter Unit"
+              {...register('tenureUnit')}
+            />
+            {errors.tenureUnit && (
+              <p className="text-sm text-red-500">
+                {errors.tenureUnit.message}
+              </p>
+            )}
           </div>
 
           <div className="space-y-2">

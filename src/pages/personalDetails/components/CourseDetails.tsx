@@ -15,8 +15,9 @@ import {
 } from '../../../components/ui/select';
 import { Button } from '../../../components/ui/button';
 import { Plus } from 'lucide-react';
+import type { FormComponentProps } from '../AddNewForm';
 
-const CourseDetails = () => {
+const CourseDetails = ({ register, errors }: FormComponentProps) => {
   return (
     <Card>
       <CardHeader className="flex flex-row items-center justify-between">
@@ -30,27 +31,62 @@ const CourseDetails = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           <div className="space-y-2">
             <Label htmlFor="courseName">Course Name</Label>
-            <Input id="courseName" placeholder="Enter Course Name" />
+            <Input
+              id="courseName"
+              placeholder="Enter Course Name"
+              {...register('courseName')}
+            />
+            {errors.courseName && (
+              <p className="text-sm text-red-500">
+                {errors.courseName.message}
+              </p>
+            )}
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="grade">Grade</Label>
-            <Select>
-              <SelectTrigger>
-                <SelectValue placeholder="Select grade" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="a">A</SelectItem>
-                <SelectItem value="b">B</SelectItem>
-                <SelectItem value="c">C</SelectItem>
-                <SelectItem value="d">D</SelectItem>
-              </SelectContent>
-            </Select>
+            <Label htmlFor="courseFrom">From</Label>
+            <Input id="courseFrom" type="date" {...register('courseFrom')} />
+            {errors.courseFrom && (
+              <p className="text-sm text-red-500">
+                {errors.courseFrom.message}
+              </p>
+            )}
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="year">Year</Label>
-            <Input id="year" type="number" placeholder="Enter Year" />
+            <Label htmlFor="courseTo">To</Label>
+            <Input id="courseTo" type="date" {...register('courseTo')} />
+            {errors.courseTo && (
+              <p className="text-sm text-red-500">{errors.courseTo.message}</p>
+            )}
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="courseGrade">Grade</Label>
+            <Input
+              id="courseGrade"
+              placeholder="Enter Grade"
+              {...register('courseGrade')}
+            />
+            {errors.courseGrade && (
+              <p className="text-sm text-red-500">
+                {errors.courseGrade.message}
+              </p>
+            )}
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="courseInstitute">Institute</Label>
+            <Input
+              id="courseInstitute"
+              placeholder="Enter Institute"
+              {...register('courseInstitute')}
+            />
+            {errors.courseInstitute && (
+              <p className="text-sm text-red-500">
+                {errors.courseInstitute.message}
+              </p>
+            )}
           </div>
         </div>
       </CardContent>

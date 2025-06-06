@@ -6,8 +6,15 @@ import {
 } from '../../../components/ui/card';
 import { Input } from '../../../components/ui/input';
 import { Label } from '../../../components/ui/label';
+import type { UseFormRegister, FieldErrors } from 'react-hook-form';
+import type { FormData } from '../AddNewForm';
 
-const OpsProfileDetails = () => {
+interface OpsProfileDetailsProps {
+  register: UseFormRegister<FormData>;
+  errors: FieldErrors<FormData>;
+}
+
+const OpsProfileDetails = ({ register, errors }: OpsProfileDetailsProps) => {
   return (
     <Card>
       <CardHeader>
@@ -21,7 +28,13 @@ const OpsProfileDetails = () => {
               id="peaceMonths"
               type="number"
               placeholder="Enter Peace Months"
+              {...register('peaceMonths', { valueAsNumber: true })}
             />
+            {errors.peaceMonths && (
+              <p className="text-sm text-red-500">
+                {errors.peaceMonths.message}
+              </p>
+            )}
           </div>
 
           <div className="space-y-2">
@@ -30,7 +43,13 @@ const OpsProfileDetails = () => {
               id="fieldMonths"
               type="number"
               placeholder="Enter Field Months"
+              {...register('fieldMonths', { valueAsNumber: true })}
             />
+            {errors.fieldMonths && (
+              <p className="text-sm text-red-500">
+                {errors.fieldMonths.message}
+              </p>
+            )}
           </div>
 
           <div className="space-y-2">
@@ -39,7 +58,13 @@ const OpsProfileDetails = () => {
               id="highAltMonths"
               type="number"
               placeholder="Enter High Alt Months"
+              {...register('highAltMonths', { valueAsNumber: true })}
             />
+            {errors.highAltMonths && (
+              <p className="text-sm text-red-500">
+                {errors.highAltMonths.message}
+              </p>
+            )}
           </div>
 
           <div className="space-y-2">
@@ -48,7 +73,13 @@ const OpsProfileDetails = () => {
               id="ciOpsMonths"
               type="number"
               placeholder="Enter CI Ops Months"
+              {...register('ciOpsMonths', { valueAsNumber: true })}
             />
+            {errors.ciOpsMonths && (
+              <p className="text-sm text-red-500">
+                {errors.ciOpsMonths.message}
+              </p>
+            )}
           </div>
         </div>
       </CardContent>
