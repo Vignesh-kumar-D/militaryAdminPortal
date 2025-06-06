@@ -13,7 +13,7 @@ import {
 
 // Define your navigation items
 const navItems = [
-  { name: 'Personal Details', path: '/personal', icon: User },
+  { name: 'Personal Details', path: '/personal-details', icon: User },
   { name: 'Medical Record', path: '/medical', icon: HeartPulse },
   { name: 'Parade State', path: '/parade', icon: ClipboardList },
   { name: 'Query', path: '/query', icon: HelpCircle },
@@ -24,7 +24,7 @@ const Header: React.FC = () => {
   const location = useLocation();
 
   return (
-    <header className="hidden md:flex items-center w-full h-20 bg-sidebar bg-primary text-primary-foreground text-sidebar-foreground px-6 py-4 shadow-xl border-b border-sidebar-border relative z-20">
+    <header className="hidden md:flex items-center w-full h-20 bg-sidebar   text-sidebar-foreground px-6 py-4 shadow-xl border-b border-sidebar-border relative z-20">
       {/* Home / App Title or Logo - Left aligned */}
       <Link
         to="/dashboard"

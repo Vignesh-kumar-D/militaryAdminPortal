@@ -14,7 +14,7 @@ import {
 // Define your navigation items (same as Header for consistency)
 const navItems = [
   { name: 'Home', path: '/dashboard', icon: Home }, // Home moved here for mobile nav
-  { name: 'Details', path: '/personal', icon: User },
+  { name: 'Details', path: '/personal-details', icon: User },
   { name: 'Medical', path: '/medical', icon: HeartPulse },
   { name: 'Parade', path: '/parade', icon: ClipboardList },
   { name: 'Query', path: '/query', icon: HelpCircle },

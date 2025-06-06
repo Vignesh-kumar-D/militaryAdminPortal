@@ -6,14 +6,12 @@ import Header from './components/shared/Header';
 import BottomNavbar from './components/shared/BottomNavbar';
 import { useFirebase } from './contexts/useFirebase';
 import ProfilePage from './pages/profile';
+import PersonalDetails from './pages/personalDetails';
+import AddNewForm from './pages/personalDetails/AddNewForm';
 import ProtectedRoute from './ProtectedRoute';
 import { Toaster } from 'sonner';
 // Placeholder pages for the 5 options + Profile
-const PersonalDetailsPage = () => (
-  <div className="pt-10rem pb-10rem min-h-screen bg-background text-foreground flex items-center justify-center font-heading text-4xl">
-    Personal Details Page
-  </div>
-);
+
 const MedicalRecordPage = () => (
   <div className="pt-10rem pb-10rem min-h-screen bg-background text-foreground flex items-center justify-center font-heading text-4xl">
     Medical Record Page
@@ -53,7 +51,8 @@ function App() {
           />
           <Route element={<ProtectedRoute />}>
             <Route path="/dashboard" element={<HomePage />} />
-            <Route path="/personal" element={<PersonalDetailsPage />} />
+            <Route path="/personal-details" element={<PersonalDetails />} />
+            <Route path="/personal-details/add" element={<AddNewForm />} />
             <Route path="/medical" element={<MedicalRecordPage />} />
             <Route path="/parade" element={<ParadeStatePage />} />
             <Route path="/query" element={<QueryPage />} />
