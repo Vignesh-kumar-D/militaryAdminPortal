@@ -6,10 +6,17 @@ import {
 } from '../../../components/ui/card';
 import { Input } from '../../../components/ui/input';
 import { Label } from '../../../components/ui/label';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '../../../components/ui/select';
 import type { FormComponentProps } from '../AddNewForm';
 
 const SpouseDetails = ({ register, errors, watch }: FormComponentProps) => {
-  const maritalStatus = watch('maritalStatus');
+  const maritalStatus = watch?.('maritalStatus') ?? '';
 
   return (
     <Card>
@@ -54,11 +61,22 @@ const SpouseDetails = ({ register, errors, watch }: FormComponentProps) => {
 
           <div className="space-y-2">
             <Label htmlFor="maritalStatus">Marital Status</Label>
-            <Input
-              id="maritalStatus"
-              placeholder="Enter Marital Status"
-              {...register('maritalStatus')}
-            />
+            <Select
+              onValueChange={(value) =>
+                register('maritalStatus').onChange({ target: { value } })
+              }
+            >
+              <SelectTrigger id="maritalStatus">
+                <SelectValue placeholder="Select Marital Status" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="single">Single</SelectItem>
+                <SelectItem value="married">Married</SelectItem>
+                <SelectItem value="divorced">Divorced</SelectItem>
+                <SelectItem value="widowed">Widowed</SelectItem>
+              </SelectContent>
+            </Select>
+
             {errors.maritalStatus && (
               <p className="text-sm text-red-500">
                 {errors.maritalStatus.message}

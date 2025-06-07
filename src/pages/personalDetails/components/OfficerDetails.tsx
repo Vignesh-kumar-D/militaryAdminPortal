@@ -177,11 +177,20 @@ const OfficerDetails = ({ register, errors }: OfficerDetailsProps) => {
 
           <div className="space-y-2">
             <Label htmlFor="gender">Gender</Label>
-            <Input
-              id="gender"
-              placeholder="Enter Gender"
-              {...register('gender')}
-            />
+            <Select
+              onValueChange={(value) =>
+                register('gender').onChange({ target: { value } })
+              }
+            >
+              <SelectTrigger id="gender">
+                <SelectValue placeholder="Select Gender" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="male">Male</SelectItem>
+                <SelectItem value="female">Female</SelectItem>
+                <SelectItem value="other">Other</SelectItem>
+              </SelectContent>
+            </Select>
             {errors.gender && (
               <p className="text-sm text-red-500">{errors.gender.message}</p>
             )}

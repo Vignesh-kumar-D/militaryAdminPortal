@@ -6,13 +6,6 @@ import {
 } from '../../../components/ui/card';
 import { Input } from '../../../components/ui/input';
 import { Label } from '../../../components/ui/label';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '../../../components/ui/select';
 import { Button } from '../../../components/ui/button';
 import { Plus } from 'lucide-react';
 import type { UseFormRegister, FieldErrors } from 'react-hook-form';
