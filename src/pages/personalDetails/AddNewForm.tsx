@@ -74,9 +74,9 @@ const formSchema = z.object({
   familyMembers: z
     .array(
       z.object({
-        name: z.string().min(1, 'Name is required'),
-        relation: z.string().min(1, 'Relation is required'),
-        age: z.number().min(0, 'Age must be positive'),
+        name: z.string().optional(),
+        relation: z.string().optional(),
+        age: z.number().optional(),
         occupation: z.string().optional(),
         qualification: z.string().optional(),
         mobile: z.string().optional(),
@@ -149,8 +149,6 @@ const formSchema = z.object({
   sePercentage: z.number().optional(),
   sfPercentage: z.number().optional(),
   fcPercentage: z.number().optional(),
-
-  // Other sections will be added as needed
 });
 
 export type FormData = z.infer<typeof formSchema>;
@@ -168,7 +166,7 @@ const AddNewForm = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting, isValid },
+    formState: { errors, isSubmitting },
     control,
     watch,
   } = useForm<FormData>({
@@ -180,7 +178,6 @@ const AddNewForm = () => {
   });
 
   const onSubmit = async (data: FormData) => {
-    console.log('Form submitted with data:', data);
     try {
       if (!currentUser) {
         toast.error('You must be logged in to submit this form');
@@ -195,13 +192,6 @@ const AddNewForm = () => {
       toast.error('Failed to save officer details');
     }
   };
-
-  console.log('Form state:', {
-    errors,
-    isSubmitting,
-    isValid,
-    values: watch(),
-  });
 
   return (
     <div className="container mx-auto py-8 px-4 md:px-6 lg:px-8 max-w-7xl">
